@@ -27,8 +27,8 @@ urlpatterns = [
     path("",TemplateView.as_view(template_name="index.html")),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('authentication/', include('authentication.urls')),
-    path('client/', include('client.urls')),
-    path('project/', include('project.urls')),
+    path('', include('client.urls')),
+    path('', include('project.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

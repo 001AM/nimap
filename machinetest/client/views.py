@@ -3,7 +3,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
 from client.models import Client
-from client.serializers import ClientSerailzier
+from client.serializers import ClientSerializer
 
 class ClientDetails(APIView):
     def get(self,request):
@@ -13,7 +13,7 @@ class ClientDetails(APIView):
                 client_instance = Client.objects.filter(id=client_id)
             else:
                 client_instance = Client.objects.all()
-            client_serializer  = ClientSerailzier(client_instance,many=True)
+            client_serializer  = ClientSerializer(client_instance,many=True)
             if len(client_serializer.data) > 0:
                 return JsonResponse({'response':client_serializer.data}, status=200)
             else:
